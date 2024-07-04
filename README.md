@@ -201,3 +201,23 @@ If you have any questions, suggestions, or need assistance, please open an issue
 ---
 
 Created by [Timothy J. Baek](https://github.com/tjbck) - Let's make Open WebUI even more amazing together! 💪
+
+
+EXTRA NOTES
+1. Fork
+2. Make Changes such as GTM script in HTML, logo files
+2. Login to ghcr.io docker login --username adamwarniment --password GITHUBTOKEN ghcr.io
+3. Run the following to build from the dockerfile
+docker build \
+    --platform linux/amd64 \
+    --build-arg USE_CUDA=false \
+    --build-arg USE_OLLAMA=false \
+    --build-arg USE_CUDA_VER=cu121 \
+    --build-arg USE_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2 \
+    --build-arg USE_RERANKING_MODEL="" \
+    --build-arg BUILD_HASH=dev-build \
+    --build-arg UID=0 \
+    --build-arg GID=0 \
+    -t ghcr.io/adamwarniment/open-webui \
+    .
+4. docker push ghcr.io/adamwarniment/open-webui
